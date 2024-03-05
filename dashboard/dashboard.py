@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+import os
 from babel.numbers import format_currency
 
 sns.set(style='dark')
@@ -68,7 +69,16 @@ def create_order_product_lowest_sales_df(df):
 
 
 # Load data
-all_df = pd.read_csv("../dashboard/all_data.csv")
+
+# Get the directory where the current script is located
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the absolute path to the CSV file
+csv_file_path = os.path.join(script_directory, 'all_data.csv')
+
+# Read the CSV file
+all_df = pd.read_csv(csv_file_path)
+
 
 datetime_columns = ["order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
 all_df.sort_values(by="order_delivered_carrier_date", inplace=True)
