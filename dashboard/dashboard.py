@@ -68,7 +68,7 @@ def create_order_product_lowest_sales_df(df):
 
 
 # Load data
-all_df = pd.read_csv("all_data.csv")
+all_df = pd.read_csv("../dashboard/all_data.csv")
 
 datetime_columns = ["order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
 all_df.sort_values(by="order_delivered_carrier_date", inplace=True)
